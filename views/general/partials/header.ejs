@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="<%=websiteDetails.website_author%>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="<%=websiteDetails.website_description%>">
+    <title><%=title%> - <%=websiteDetails.website_tagline%></title>
+    <link href="<%=websiteDetails.website_favicon%>" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="/home/css/css2.css?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap"
+        rel="stylesheet">
+
+    <link href="/home/css/vendor.min.css" rel="stylesheet">
+    <link href="/home/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="dual-ring"></div>
+    </div>
+
+
+    <div class="wrapper clearfix" id="wrapperParallax">
+
+        <header class="header header-light header-topbar header-topbar3 header-shadow" id="navbar-spy">
+            <div class="top-bar top-bar-3">
+                <div class="container">
+                    <div class="blocks-holder">
+                        <div class="block-left">
+                            <div class="top-contact">
+                                <div class="contact-infos"><i class="energia-phone-Icon"></i>
+                                    <div class="contact-body">
+                                        <p>phone: <a href="tel:<%=websiteDetails.website_phone_number%>"><%=websiteDetails.website_phone_number%></a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-infos"><i class="energia-email--icon"></i>
+                                    <div class="contact-body">
+                                        <p>email: <a
+                                                href="#"><span
+                                                    class="__cf_email__"><%=websiteDetails.website_email%></span>
+                                            </a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-infos"><i class="energia-clock-Icon"></i>
+                                    <div class="contact-body">
+                                        <p>hours: Mon-Fri: 8am – 7pm </p>
+                                    </div>
+                                </div>
+                                <div class="contact-infos">
+                                    <div class="contact-body">
+                                        <p><a href="<%=websiteDetails.website_telegram%>">Join Our Telegram Group</a>  </p>
+                                    </div>
+                                </div>
+                                <div class="contact-infos">
+                                    <div class="contact-body">
+                                        <p><a href="<%=websiteDetails.website_whatsapp%>">Join Our Whatsapp Group</a>  </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-right">
+                            
+                            <div class="social-links">
+                                
+                                <a class="share-facebook" href="<%=websiteDetails.website_facebook%>"><i class="energia-facebook"></i></a>
+                                
+                                <a class="share-twitter" href="<%=websiteDetails.website_twitter%>"><i class="energia-twitter"></i></a>
+                                
+                                <a class="share-youtube" href="<%=websiteDetails.website_youtube%>"><i class="energia-youtube"></i></a>
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-sticky" id="primary-menu">
+                <div class="container"><a class="navbar-brand" href="/"><img class="logo logo-dark"
+                            src="<%=websiteDetails.website_logo%>" alt="<%=websiteDetails.website_title%>"><img class="logo logo-mobile"
+                            src="<%=websiteDetails.website_logo%>" alt="<%=websiteDetails.website_title%>"></a>
+                    <div class="module-holder module-holder-phone">
+                        
+                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarContent">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item" id="home" data-hover=""><a href="/"><span>Home</span></a></li>
+
+                            <li class="nav-item" id="package" data-hover=""><a href="/packages"><span>Packages</span></a></li>
+
+                            <li class="nav-item" id="about" data-hover=""><a href="/page/about-us"><span>About Us</span></a></li>
+
+                            <li class="nav-item" id="how" data-hover=""><a href="/page/how-it-works"><span>How It Works</span></a></li>
+
+                            <li class="nav-item has-dropdown" data-hover=""><a class="dropdown-toggle" href="#"
+                                    data-toggle="dropdown"><span>My Account</span></a>
+                                <ul class="dropdown-menu">
+                                    <%if(user){%>
+                                    <li class="nav-item"><a href="<%=user.role === "User"?'/user/dashboard' : '/admin/dashboard'%>"><span>My Dashboard</span></a></li>
+                                    <li class="nav-item"><a href="/logout"><span>Logout</span></a>
+                                    </li>
+
+                                    <%}else{%>
+                                    <li class="nav-item"><a href="/login"><span>Login</span></a></li>
+                                    <li class="nav-item"><a href="/register"><span>Register</span></a>
+                                    </li>
+                                    <li class="nav-item"><a href="/forgot-password"><span>Reset Password</span></a>
+                                    </li>
+
+                                    <%}%>
+                                    
+                                </ul>
+                            </li>
+
+                            <li class="nav-item" id="contact" data-hover=""><a href="/contact-us"><span>Contact Us</span></a></li>
+
+                        </ul>
+                        <div class="module-holder">
+
+                            <%if(user){%>
+
+                            <div class="module-contact module-contact-2"><a class="btn btn--primary"
+                                    href="<%=user.role === "User"?'/user/dashboard' : '/admin/dashboard'%>">Dashboard <i class="energia-arrow-right"></i></a>
+                            </div>
+                            <%}else{%>
+                            <div class="module-contact module-contact-2"><a class="btn btn--primary"
+                                    href="/register">Register <i class="energia-arrow-right"></i></a>
+                            </div>
+
+                            <%}%>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </nav>
+        </header>

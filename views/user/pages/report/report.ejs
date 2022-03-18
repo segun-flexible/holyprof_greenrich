@@ -1,0 +1,48 @@
+<%-include("../../partials/header")%>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+<div class="container-fluid mt--6">
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            
+            <div class="card">
+                <div class="card-body">
+            
+            
+                    <form id="report">
+                        
+                        <div class="form-group">
+                            <label for="summernote">Why Are You Reporting</label>
+                            <textarea class="form-control" id="summernote" rows="6" required></textarea>
+                        </div>
+
+            
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit Report</button>
+                    </form>
+            
+                </div> <!-- end card-body-->
+            </div>
+
+
+        </div>
+    </div>
+ 
+
+
+
+
+<script src="/js/user/report/report.js"></script>
+
+<script src="/js/partials/fetcher.js"></script>
+<script src="/js/partials/sweetalert.js"></script>
+
+<%-include("../../partials/footer")%>

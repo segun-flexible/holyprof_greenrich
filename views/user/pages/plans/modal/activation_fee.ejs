@@ -1,0 +1,60 @@
+
+<div class="modal fade" id="plan-<%=pl.plan_id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pay <%=websiteDetails.website_currency%><%=pl.plan_activation_fee%> Activation Fee</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-wrapper">
+                    <!-- Form controls -->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            <h3 class="mb-0">Activation Fee Form</h3>
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <form id="activation">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="fee">Send Payment To This Account</label>
+                                    <p><%-websiteDetails.website_activation_fee_bank_account%></p>
+                                </div>
+                                <br><br>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="fee">Fee Amount</label>
+                                    <input data-amount="<%=pl.plan_activation_fee%>" disabled readonly type="number" class="form-control" id="fee"
+                                        value="<%=pl.plan_activation_fee%>">
+                                </div>
+                                
+                               
+                                <div class="form-group">
+                                    <label class="form-control-label" for="proof">Fee Proof (Payment Screenshot)</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="proof" accept="image/*">
+                                        <label class="custom-file-label" for="customFileLang"></label>
+                                        <br>
+                                        <small>Once You Send Payment To The Above Bank Account, Make A Screenshot Of It And Upload It Here!</small>
+                                    </div>
+                                </div>
+
+                        
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-notification">Activation Fee?</button>
+
+                <button id="send" type="submit" class="btn btn-primary">Submit Payment</button>
+            </div></form>
+        </div>
+    </div>
+</div>

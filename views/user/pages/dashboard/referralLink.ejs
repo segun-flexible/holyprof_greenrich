@@ -1,0 +1,31 @@
+<div class="col-xl-6">
+          <div class="card">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="text-uppercase text-muted ls-1 mb-1">My Referral Link</h5>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form class="referral">
+              
+                <div class="form-group mb-3">
+                  <p>Your Username: <strong><%=user.username%></strong></p>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control" aria-label="Referral Link" value="<%=websiteDetails.website_url %>/register?ref=<%=user.uid%>" readonly="">
+                    <div class="input-group-append">
+                      <button class="btn btn-dark waves-effect waves-light" type="submit">Copy Referral
+                        Link</button>
+                    </div>
+                  </div>
+                </div>
+              
+              
+              </form>
+            </div>
+          </div>
+        </div>

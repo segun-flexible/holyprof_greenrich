@@ -1,0 +1,80 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h5 class="text-uppercase text-muted ls-1 mb-1">Last 10 Referrals History</h5>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card-body p-0">
+                        <%if(referralHistory.length> 0){ %>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">#</th>
+                                            <th class="border-0">Name</th>
+                                            <th class="border-0">Amount</th>
+                                            
+                                            <th class="border-0">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%referralHistory.map((ht,index)=>{ %>
+                                            <tr>
+                                                <td>
+                                                    <%=index + 1 %>
+                                                </td>
+                                                
+                                                <td style="text-transform: capitalize;">
+                                                    <%=ht.fullname %> (<%=ht.username %>)
+                                                </td>
+
+                                                <td>
+                                                    <%=websiteDetails.website_currency%><%=ht.r_amount.toLocaleString()%>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%if(ht.r_status){%>
+                                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>Completed</button>
+                                                    <%}else{%>
+                                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>Pending</button>
+                                                    <%}%>
+                                                </td>
+                                                
+                                                
+                                                
+
+                                               
+                                                
+                                                
+
+                                                
+
+
+                                            </tr>
+
+                                            
+                                            
+                                            <% }) %>
+
+                                                
+                                    </tbody>
+
+                                </table>
+
+
+
+                                
+
+                            </div>
+                            
+                            <% }else{%>
+                                <h3 class="text-center pt-3">No Referral Stats At The Moment</h3>
+                                <%}%>
+                    </div>
+
+    </div>
+</div>

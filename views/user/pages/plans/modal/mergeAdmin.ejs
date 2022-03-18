@@ -1,0 +1,115 @@
+
+    <div class="col-12 col-lg-6 col-md-6 col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Reciever Information</h3>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body">
+                <a href="javascript:void(0)">
+                    <img src="<%=mergeAdmin.avatar ?  mergeAdmin.avatar: '/img/avatar.jpg' %>"
+                        class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                        style="width: 100px;height: 100px;object-fit: cover;">
+                </a>
+                <div class="pt-4 text-center">
+                    <h5 class="h3 title">
+                        <span class="d-block mb-1 text-capitalize">
+                            <%=mergeAdmin.fullname%>
+                        </span>
+
+                    </h5>
+
+                    <div class="mt-3">
+
+                        <ul class="list-unstyled my-4">
+                            <li>Account Name: <strong>
+                                    <%=mergeAdmin.bank_account_name%>
+                                </strong></li>
+                            <li>Account Number: <strong>
+                                    <%=mergeAdmin.bank_account_number%>
+                                </strong></li>
+                            <li>Account Bank Type: <strong>
+                                    <%=mergeAdmin.bank_account_type%>
+                                </strong></li>
+                                <br>
+                                <br>
+                                <li>Phone Number: <strong>
+                                        <%=mergeAdmin.phone_number%>
+                                    </strong></li>
+                                
+                        </ul>
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header">
+                <h3 class="mb-0">Payment Instruction</h3>
+            </div>
+            <!-- Card body -->
+            <div class="card bg-gradient-default">
+                <div class="card-body">
+                    <ul class="list-unstyled my-4">
+
+                        <li>
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div
+                                        class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="pl-2 text-sm text-white">
+                                        You Are To Send <strong><%=websiteDetails.website_currency%><%=mergeAdmin.h_amount_requested.toLocaleString()%></strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+
+                       
+
+                        
+
+
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form data-receiver_id="<%=mergeAdmin.uid%>" data-user_type="1" id="uploadproof">
+
+                    <div class="form-group">
+                        <label class="form-control-label">Upload Proof Of Payment</label>
+                        <div class="custom-file">
+                            <input required type="file" class="custom-file-input" id="customFileLang" lang="en">
+                            <label class="custom-file-label" for="customFileLang"></label>
+                        </div>
+                    </div>
+
+                    <button id="send" type="submit" class="btn btn-facebook btn-icon my-2">
+                        <span class="btn-inner--icon"><i class="fa fa-cloud-upload"></i></span>
+                        <span class="btn-inner--text">Upload & Send</span>
+                    </button>
+
+                    <input type="text" hidden id="token" value="<%=token%>">
+
+                </form>
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,148 @@
+<%-include("../../partials/header")%>
+
+<div class="container-fluid mt--6">
+
+
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header"><%=title%></h5>
+                    <div class="container pb-5 pt-2">
+                        <div class="d-flex flex-column">
+                            <label class="form-control-label" for="filterbyStatus">Filter By Status</label>
+                            <select class="form-control" id="filterbyStatus">
+                                <option value="" selected>Select</option>
+                                <option value="1">Paid (Completed Withdrawal)</option>
+                                <option value="2">Processed Withdrawal</option>
+                                <option value="0">Pending Withdrawal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <%if(history.length> 0){ %>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">#</th>
+                                            <th class="border-0">TrxId</th>
+                                            <th class="border-0">Amount</th>
+                                            <th class="border-0">Sender</th>
+                                            <th class="border-0">Proof</th>
+                                            <th class="border-0">Status</th>
+                                            <th class="border-0">Date</th>
+                                            <th class="border-0">Action</th>
+                                            
+                                            
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%history.map((ht,index)=>{ %>
+                                            <tr>
+                                                <td>
+                                                    <%=index + 1 %>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%=ht.h_trans %>
+                                                </td>
+
+                                                <td>
+                                                    <%=websiteDetails.website_currency + ht.h_amount_requested.toLocaleString() %>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%if(ht.h_status === 0){%>
+                                                    <%if(ht.h_sender_id){%>
+                                                    <button onclick="viewSender('<%=ht.h_sender_id%>','<%=ht.h_user_type%>',this)" type="button" class="btn btn-info btn-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>View Sender</button>
+                                                    <%}else{%>
+                                                    None
+                                                    <%}%>
+
+                                                    <%}else{%>
+                                                    N.A
+                                                    <%}%>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%if(ht.h_proof){%>
+                                                    <button data-toggle="modal" data-target="#proof-<%=ht.h_id%>" type="button" class="btn btn-info btn-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>View Proof</button>
+
+                                                    <%}else{%>
+                                                    None
+                                                    <%}%>
+                                                </td>
+                                                
+                                                
+
+                                                <td>
+                                                    <%if(ht.h_status === 1){ %>
+                                                        <button type="button" class="btn btn-success btn-sm width-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>Paid</button>
+                                                    <%}else if(ht.h_status === 2){ %>
+                                                        <button type="button" class="btn btn-info btn-sm width-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>Processed</button>
+                                                    <%}else{%>
+                                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-exclamation-triangle"
+                                                            aria-hidden="true"></i>
+                                                        Pending</button>
+                                                    <%} %>
+                                                </td>
+
+                                                <td>
+                                                    <%=ht.h_created %>
+                                                </td>
+
+                                                
+                                                    <%if(ht.h_status === 2){%>
+                                                    <%-include("./modal/withdrawalAction",{ht})%>
+                                                    <%}else{%>
+                                                    <td>None</td>
+                                                    
+                                                    <%}%>
+                                                
+
+                                               
+                                                
+                                                
+
+                                            <%-include("./modal/withdrawalPaymentProof",{ht})%>
+
+                                            </tr>
+
+                                            
+                                            
+                                            <% }) %>
+
+                                                
+                                    </tbody>
+
+                                </table>
+
+
+
+                                
+
+                            </div>
+                            <%if(history.length){%>
+                    <%-include("../../partials/pagination");%>
+                    <%}%>
+                            <% }else{%>
+                                <h3 class="text-center pt-3">No Withdrawal Stats At The Moment</h3>
+                                <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<a href="javascript:void(0)" data-toggle="modal" data-target="#sender" id="userModal" hidden></a>
+
+<%-include("./modal/withdrawalSender")%>
+
+<script src="/js/user/history/withdrawal.js"></script>
+<script src="/js/partials/fetcher.js"></script>
+<script src="/js/partials/sweetalert.js"></script>
+
+<%-include("../../partials/footer")%>

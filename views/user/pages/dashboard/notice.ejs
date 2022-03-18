@@ -1,0 +1,48 @@
+<%if(notice && notice.notice_status){%>
+    
+        <div class="col-12">
+
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="text-uppercase text-muted ls-1 mb-1"><i class="fa fa-bullhorn"
+                                    aria-hidden="true"></i>Announcement Board!</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+
+
+
+                        <h5 class="alert-heading">
+                            <%=notice.notice_title%>
+                        </h5>
+                        
+                        <div id="notice-text">
+                            <%-notice.notice_body%>
+                        </div>
+
+
+
+
+
+                            <hr>
+                            <p class="mb-0">Notice Pinned On <%=notice.updated_at || notice.created_at%>
+                            </p>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+   
+    <%}%>

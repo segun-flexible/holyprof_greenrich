@@ -1,0 +1,62 @@
+<%-include("../partials/header")%>
+
+<section class="pricing pricing-1" id="pricing-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-3">
+                <div class="heading heading-16 text-center">
+                    <p class="heading-subtitle">Packages And Plans</p>
+                    <h2 class="heading-title">Affordable &amp; Flexible Packages That Adapts Your Needs</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <%plans.map((pl,index)=>{%>
+                <div class="col-12 col-lg-4 d-flex pb-3">
+                    <div class="price-table">
+                        <div class="pricing-panel">
+                            <div class="pricing-body">
+                                <div class="pricing-heading">
+                                    <h4 class="pricing-title">
+                                        <%=pl.plan_name%>
+                                    </h4>
+                                    <!-- <p class="pricing-desc">The perfect plan for small business.</p> -->
+                                </div>
+                                <div class="pricing-price">
+                                    <p> <span class="currency">
+                                            <%=websiteDetails.website_currency%>
+                                                <%=pl.plan_price.toLocaleString()%>
+                                        </span><span class="time">
+                                            <%=pl.plan_duration%> Days
+                                        </span></p><a class="btn btn--secondary" href="/user/plans?merge?id=<%=pl.plan_id%>">invest
+                                        now <i class="energia-arrow-right"></i></a>
+                                </div>
+                                <div class="pricing-list">
+                                    <p></p>
+                                    <ul class="advantages-list list-unstyled">
+                                        <li>
+                                            <%=pl.plan_roi%>% Return Of Investment
+                                        </li>
+                                        <li>
+                                            <%=pl.plan_referral%>% Referral Bonus
+                                        </li>
+                                        <li>
+                                            <%=pl.plan_duration%> Days Investment Duration
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+                <%})%>
+        </div>
+
+    </div>
+
+   
+
+</section>
+
+<%-include("../partials/footer")%>

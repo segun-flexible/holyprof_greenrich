@@ -1,0 +1,36 @@
+
+<%if(processWithdrawal){%>
+<div id="ofBar">
+    <div class="close"><a id="close-bar"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+    <div id="ofBar-content">🌴 <b style="text-transform: capitalize;">Hi <%=user.username%></b> Your withdrawal request
+        has been merged with a user!, goto your withdrawal history to view the payment and confirm it once you have see
+        the alert.
+        <br>
+
+
+    </div>
+    <div id="ofBar-right"><a href="/user/history/withdrawal" id="btn-bar">View The Payment</a></div>
+</div>
+<%}%>
+
+<%if(myMerge && myMerge.mt_status===1){%>
+<%if(timeUp && timeUp.mt_id && timeUp.mt_sender_id === timeUp.id){%>
+<div id="ofBar">
+    <div class="close"><a id="close-bar"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+    <div id="ofBar-content"> <b style="color: red;">WARNING</b> You have <b><span id="hours" class="pl-2 text-lg text-white">
+        <%=timeUp.hours%>
+    </span> <span class="text-xs text-white">Hours</span> :
+    <span id="minutes" class="pl-2 text-lg text-white">
+        <%=timeUp.minutes%>
+    </span> <span class="text-xs text-white">Minutes</span> :
+    <span id="seconds" class="pl-2 text-lg text-white">
+        <%=timeUp.seconds%>
+    </span> <span class="text-xs text-white">Seconds</span></b> to send payment to your merge, failure to send the payment will get your <%=websiteDetails.website_title%> account locked
+        <br>
+
+
+    </div>
+    <div id="ofBar-right"><a href="/user/plan/merge?id=<%=timeUp.mt_plan_id%>" id="btn-bar">Send Payment</a></div>
+</div>
+<%}%>
+<%}%>

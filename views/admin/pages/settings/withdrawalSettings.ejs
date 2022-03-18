@@ -1,0 +1,98 @@
+<%- include('../../partials/header'); %>
+
+    <div class="container-fluid dashboard-content">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">
+                        <%= title %>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+
+
+
+                <div class="card">
+                    <div class="card-body">
+
+
+                        <form id="settings">
+                            
+
+                            <div class="form-group">
+                                <label for="status">Withdrawal Status</label>
+                                
+                                <select id="status" class="custom-select custom-select-sm form-control form-control-sm">
+                                    <option selected value="">Withdrawal Is <%=websiteDetails.website_withdrawal_status ? ' ON' : ' OFF'%></option>
+                                    
+                                    <option value="1">ON</option>
+                                    <option value="0">OFF</option>
+                                    
+                                
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="min_roi">Minimum ROI Withdrawal</label>
+                                <input type="text" class="form-control" id="min_roi" value="<%=websiteDetails.website_min_roi_withdrawal%>">
+                                <small id="min_roi" class="form-text text-muted">Minimum withdrawal for R.O.I type</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="min_ref">Minimum Referral Withdrawal</label>
+                                <input type="text" class="form-control" id="min_ref" value="<%=websiteDetails.website_min_ref_withdrawal%>">
+                                <small id="min_ref" class="form-text text-muted">Minimum withdrawal for R.O.I type</small>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label for="min_downline">Minimum Total Referral For Withdrawal</label>
+                                
+                                <input type="text" class="form-control" id="min_downline" value="<%=websiteDetails.website_min_ref%>">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="recomit">Recommitment</label>
+                                
+                                <select id="recomit" class="custom-select custom-select-sm form-control form-control-sm">
+                                    <option selected value="">Withdrawal Recommitment Is <%=websiteDetails.website_recommitment_status ? ' ON' : ' OFF'%></option>
+                                    
+                                    <option value="1">ON</option>
+                                    <option value="0">OFF</option>
+                                    
+                                
+                                </select>
+
+                            </div>
+                            
+
+                            
+
+
+
+
+                            <button type="submit" id="submit-btn" class="btn btn-primary waves-effect waves-light">Save
+                                Setting!</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+
+
+
+
+            </div><!-- end col-->
+        </div>
+    </div>
+
+    <script src="/js/admin/settings/withdrawal.js"></script>
+    <%- include('../../partials/footer'); %>

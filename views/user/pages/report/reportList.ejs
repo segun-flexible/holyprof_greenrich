@@ -1,0 +1,143 @@
+<%-include("../../partials/header")%>
+
+<div class="container-fluid mt--6">
+
+
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header"><%=title%></h5>
+                    <div class="container pb-5 pt-2">
+                        <div class="d-flex flex-column">
+                            <label class="form-control-label" for="filterbyStatus">Filter By Status</label>
+                            <select class="form-control" id="filterbyStatus">
+                                <option value="" selected>Select</option>
+                                <option value="1">Resolved</option>
+                                <option value="0">Pending</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <%if(report.length> 0){ %>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">#</th>
+                                            <th class="border-0">TrxId</th>
+                                            <th class="border-0">Type</th>
+                                            <th class="border-0">Message</th>
+                                        
+                                            <th class="border-0">Date</th>
+
+                                            <th class="border-0">Status</th>
+
+                                            <th class="border-0">Action</th>
+                                            
+                                            
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%report.map((rp,index)=>{ %>
+                                            <tr>
+                                                <td>
+                                                    <%=index + 1 %>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%=rp.rp_trx_id %>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%=rp.rp_type === 1 ? 'Investment' : 'Withdrawal' %>
+                                                </td>
+
+                                                
+                                                
+                                                <td>
+                                                    <button data-toggle="modal" data-target="#message-<%=rp.rp_id%>" type="button" class="btn btn-info btn-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>View Message</button>
+                                                    
+                                                    
+                                                </td>
+                                                
+                                               
+                                               <td>
+                                                    <%=rp.rp_created_at %>
+                                                </td>
+                                                
+
+                                                <td>
+                                                    <%if(rp.rp_status === 1){ %>
+                                                        <button type="button" class="btn btn-success btn-sm width-sm waves-effect waves-light"><i class="fa fa-check" aria-hidden="true"></i>Resolved</button>
+                                                    <%}else{%>
+                                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"><i class="fa fa-exclamation-triangle"
+                                                            aria-hidden="true"></i>
+                                                        Pending</button>
+                                                    <%} %>
+                                                </td>
+
+                                                
+
+                                                
+                                                <td class="text-right">
+                                                
+                                                
+                                                
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                            <a class="dropdown-item" onclick="deleteReport('<%=rp.rp_id%>',this)" href="javascript:void(0)">Delete Report</a>
+                                                            
+                                                
+                                                        </div>
+                                                    </div>
+                                                
+                                                </td>
+                                                
+
+                                               
+                                                
+                                                
+
+                                            <%-include("./modal/messageModal",{rp})%>
+
+                                            </tr>
+
+                                            
+                                            
+                                            <% }) %>
+
+                                                
+                                    </tbody>
+
+                                </table>
+
+
+
+                                
+
+                            </div>
+                            <%if(report.length){%>
+                    <%-include("../../partials/pagination");%>
+                    <%}%>
+                            <% }else{%>
+                                <h3 class="text-center pt-3">No Report Stats At The Moment</h3>
+                                <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<script src="/js/user/report/reportList.js"></script>
+<script src="/js/partials/fetcher.js"></script>
+<script src="/js/partials/sweetalert.js"></script>
+
+<%-include("../../partials/footer")%>

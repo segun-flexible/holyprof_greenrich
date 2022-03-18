@@ -1,0 +1,107 @@
+<%-include("../partials/header")%>
+
+
+
+<section class="map map-2">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 class="d-none">our office map</h3>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="testimonial testimonial-5 bg-overlay bg-overlay-white2 bg-section"
+    style="background-image: url(&quot;home/images/background/wavy-pattern.png&quot;);">
+
+    <div class="container">
+        <div class="contact-panel contact-panel-2">
+            <div class="row">
+                <div class="col-12 col-lg-5 img-card-holder">
+                    <div class="img-card img-card-2 bg-overlay bg-overlay-theme bg-section"
+                        style="background-image: url(&quot;home/images/contact/2.jpg&quot;);">
+
+                        <div class="card-content">
+                            <div class="content-top">
+                                <p>Did you want to contact us, make enquiries or report a problem to us, kindly use this form and
+                                write to use, we will reply as fast as we can.</p>
+                            </div>
+                            <div class="content-bottom">
+                                <ul class="list-unstyled contact-infos">
+                                    <li class="contact-info"><i class="energia-phone-Icon"></i>
+                                        <p>Emergency Line: <a href="tel:123-456-7890">
+                                                <%=websiteDetails.website_phone_number%>
+                                            </a></p>
+                                    </li>
+                                    <li class="contact-info"><i class="energia-location-Icon"></i>
+                                        <p>Location: <%=websiteDetails.website_address%>
+                                        </p>
+                                    </li>
+                                    <li class="contact-info"><i class="energia-clock-Icon"></i>
+                                        <p>Mon - Fri: 8:00 am - 7:00 pm </p>
+                                    </li>
+                                    <li class="contact-info">
+                                        <a href="<%=websiteDetails.website_telegram%>"><p>Join Our Telegram Group </p></a>
+                                        
+                                    </li>
+                                    <li class="contact-info">
+                                        <a href="<%=websiteDetails.website_whatsapp%>"><p>Join Our Whatsapp Group </p></a>
+                                        
+                                    </li>
+                                </ul><a class="btn btn--white" href="/page/about-us">About us <i
+                                        class="energia-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="contact-card">
+                        <div class="contact-body">
+                            <h5 class="card-heading">get in touch</h5>
+                            <p class="card-desc">We take great pride in everything that we do, to carefully attend and solve our investors issues and deliver best quality interaction.</p>
+                            <form id="contact">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <input class="form-control" type="text" id="name" name="contact-name" placeholder="Name" required="">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <input class="form-control" type="text" id="email" name="contact-email" placeholder="Email" required="">
+                                    </div>
+                            
+                                    <div class="col-12">
+                                        <input class="form-control" type="text" id="subject" name="subject" placeholder="Subject" required="">
+                                    </div>
+                            
+                                    <div class="col-12">
+                                        <textarea class="form-control" id="message" placeholder="Your Message" name="contact-infos" cols="30"
+                                            rows="10"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn--secondary">Send Message <i class="energia-arrow-right"></i></button>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="contact-result"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+       
+
+    </div>
+
+</section>
+
+<script src="/js/home/contact.js"></script>
+
+<script src="/js/partials/sweetalert.js"></script>
+
+<%-include("../partials/footer")%>

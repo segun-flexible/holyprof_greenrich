@@ -1,0 +1,38 @@
+<%-include("../../partials/header");%>
+
+<div class="container-fluid mt--6">
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row">
+                <%plans.map(pl =>{%>
+                <%-include("./plansList",{pl})%>
+
+                <%if(websiteDetails.website_activation_fee){%>
+                
+                <%if(user.current_activation_fee < 1){%>
+                <%-include("./modal/activation_fee",{pl})%>
+                <%}%>
+                
+                <%}%>
+
+                <%})%>
+            </div>
+        </div>
+    </div>
+
+<%if(websiteDetails.website_activation_fee){%>
+
+<%-include("./modal/what_is_activation_fee")%>
+<script src="/js/user/plans/activation.js"></script>
+
+<%}%>
+
+<script src="/js/user/plans/planList.js"></script>
+
+<script src="/js/partials/fetcher.js"></script>
+<script src="/js/partials/sweetalert.js"></script>
+<%-include("../../partials/footer");%>

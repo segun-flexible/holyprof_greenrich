@@ -1,0 +1,85 @@
+<div class="col-xl-6">
+
+    <div class="card bg-gradient-default">
+        <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h5 class="text-uppercase text-muted ls-1 mb-1">Investment Plan's Details</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+
+
+            <%if(investment && investment.r_id){%>
+            <div class="text-white" role="alert">
+                <h4 class="alert-heading" style="text-transform: capitalize;">Hi <%=user.username%>!</h4>
+            
+            
+                <ul style="list-style: none;padding: 0;" class="membership_list">
+                    <li><i style="color: #ff407b;" class="fa fa-check-circle-o" aria-hidden="true"></i> Your Current
+                        Investment Plan
+                        Is <strong>
+                            <%=investment.r_plan_name%>
+                        </strong> <i class="fa fa-check-circle-o" aria-hidden="true"></i></li>
+                    <li><i style="color: #ff407b;" class="fa fa-check-circle-o" aria-hidden="true"></i> You Have
+                        <strong><%=investment.r_duration%> <%=investment.r_duration > 1 ? ' Days' :' Day'%></strong> Left To Investment Expiration And To Make Withdrawal <i class="fa fa-clock-o"
+                            aria-hidden="true"></i>
+                    </li>
+            
+                </ul>
+            
+            
+            
+                <hr>
+                <p class="mb-0">You Join Us <strong style="text-transform: capitalize;">
+                        <%=user.created_at%> 
+                    </strong></p>
+                <p><small>Thanks For Being Part Of Us!</small></p>
+            
+            </div>
+
+            <%}else{%>
+
+            <div class="text-white" role="alert">
+                <h4 class="alert-heading" style="text-transform: capitalize;">Hi <%=user.username%>!</h4>
+            
+            
+                <span class="text-danger">You have no investment plan on the system, kindly topup activation and purchase a plan</span>
+
+                <br><br>
+
+                <span>
+                    <%if(timeUp && timeUp.mt_id && timeUp.mt_sender_id===timeUp.id){%>
+                    <a href="/user/plan/merge?id=<%=timeUp.mt_plan_id%>" class="btn btn-icon btn-success" type="button">
+                        <span class="btn-inner--icon"><i class="fa fa-briefcase text-white"></i></span>
+                        <span class="btn-inner--text">Send Payment</span>
+                    </a>
+                    <%}else{%>
+                    <a href="/user/plans" class="btn btn-icon btn-success" type="button">
+                        <span class="btn-inner--icon"><i class="fa fa-briefcase text-white"></i></span>
+                        <span class="btn-inner--text">Purchase Plan</span>
+                    </a>
+                    <%}%>
+                    
+                </span>
+            
+            
+            
+                <hr>
+                <p class="mb-0">You Join Us <strong style="text-transform: capitalize;">
+                        <%=user.created_at%> 
+                    </strong></p>
+                <p><small>Thanks For Being Part Of Us!</small></p>
+            
+            </div>
+
+            <%}%>
+
+
+        </div>
+    </div>
+
+
+</div>

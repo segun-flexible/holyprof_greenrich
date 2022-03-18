@@ -1,0 +1,32 @@
+<%-include("../../partials/header");%>
+
+<div class="container-fluid mt--6">
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row justify-content-center">
+            <%if(myMerge && myMerge.mt_status === 1){%>
+                <%if(mergeUser){%>
+                <%-include("./modal/mergeUser")%>
+                <script src="/js/user/countdown.js"></script>
+                <%}else{%>
+                <%-include("./modal/mergeAdmin")%>
+                <%}%>
+                <%-include("./modal/paymentInstruction.ejs")%>
+            <%}else if(myMerge && myMerge.mt_status === 0){%>
+                <%-include("./modal/awaitingMerging")%>
+            <%}else{%>
+                <%-include("./modal/awaitingMerging")%>
+            <%}%>
+            </div>
+        </div>
+    </div>
+
+
+<script src="/js/user/plans/merge.js"></script>
+<script src="/js/partials/fetcher.js"></script>
+<script src="/js/partials/sweetalert.js"></script>
+<%-include("../../partials/footer");%>

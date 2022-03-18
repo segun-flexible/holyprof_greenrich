@@ -1,0 +1,146 @@
+
+                <div class="col-12 col-lg-6 col-md-6 col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0">Reciever Information</h3>
+                        </div>
+
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <a href="javascript:void(0)">
+                                <img src="<%=mergeUser.avatar ?  mergeUser.avatar: '/img/avatar.jpg' %>" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 100px;height: 100px;object-fit: cover;">
+                            </a>
+                            <div class="pt-4 text-center">
+                                <h5 class="h3 title">
+                                    <span class="d-block mb-1 text-capitalize"><%=mergeUser.fullname%></span>
+                                    
+                                </h5>
+
+                                <div class="mt-3">
+                                    
+                                    <ul class="list-unstyled my-4">
+                                        <li>Account Name: <strong><%=mergeUser.bank_account_name%></strong></li>
+                                        <li>Account Number: <strong><%=mergeUser.bank_account_number%></strong></li>
+                                        <li>Account Bank Type: <strong><%=mergeUser.bank_account_type%></strong></li>
+                                        <br>
+                                        <li>Phone Number: <strong><%=mergeUser.phone_number%></strong></li>
+                                        
+                                    </ul>
+
+                                </div>
+                               
+
+                                
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            <h3 class="mb-0">Payment Instruction</h3>
+                        </div>
+                        <!-- Card body -->
+                        <div class="card bg-gradient-default">
+                            <div class="card-body">
+                                <ul class="list-unstyled my-4">
+                                    
+                                    <li>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span class="pl-2 text-sm text-white"><%=websiteDetails.website_currency%><%=mergeUser.h_amount_requested.toLocaleString()%></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="mt-3">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span class="pl-2 text-sm text-white"><%=mergeUser.h_created%>, <%=mergeUser.time%></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="mt-3">
+                                        <div class="d-flex align-items-center">
+                                            <%if(mergeUser.h_status === 1){%>
+                                            <button type="button" class="btn btn-success btn-sm">Paid</button>
+                                            <%}else if(mergeUser.h_status === 2){%>
+                                            <button type="button" class="btn btn-warning btn-sm">Processing</button>
+                                            <%}else{%>
+                                            <button type="button" class="btn btn-danger btn-sm">Unpaid</button>
+                                            <%}%>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="mt-5">
+                                        <h4 class="text-white">You are to make payment before the countdown run out, else your account will be locked.</h4>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                
+                                                <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                
+                                                <span id="hour" class="pl-2 text-lg text-white">
+                                                    0
+                                                </span> <span class="text-xs text-white">Hours</span> :
+                                                <span id="minute" class="pl-2 text-lg text-white">
+                                                    0
+                                                </span> <span class="text-xs text-white">Minutes</span> :
+                                                <span id="second" class="pl-2 text-lg text-white">
+                                                    0
+                                                </span> <span class="text-xs text-white">Seconds</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    
+                                
+                                
+                                
+                                
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <form data-receiver_id="<%=mergeUser.uid%>" data-user_type="2" id="uploadproof">
+
+                                <div class="form-group">
+                                <label class="form-control-label">Upload Proof Of Payment</label>
+                                <div class="custom-file">
+                                    <input required type="file" class="custom-file-input" id="customFileLang" lang="en">
+                                    <label class="custom-file-label" for="customFileLang"></label>
+                                </div>
+                            </div>
+                            
+                            <button id="send" type="submit" class="btn btn-facebook btn-icon my-2">
+                                <span class="btn-inner--icon"><i class="fa fa-cloud-upload"></i></span>
+                                <span class="btn-inner--text">Upload & Send</span>
+                            </button>
+
+                            <input type="text" hidden id="token" value="<%=token%>">
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+
+<input disabled hidden id="countdown" type="text" value="<%=mergeUser.countdown%>">

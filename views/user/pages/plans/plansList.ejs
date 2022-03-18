@@ -1,0 +1,88 @@
+<div class="col-xl-3 col-md-6">
+    <div class="card bg-gradient-default">
+        <div class="card-body text-white">
+            <h3 class="card-title text-white"><%=pl.plan_name%></h3>
+
+            <ul class="list-unstyled my-4">
+                <li>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                <i class="fa fa-money"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="pl-2 text-sm"><%=websiteDetails.website_currency%><%=pl.plan_price%></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="mt-2">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                <i class="fa fa-retweet"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="pl-2 text-sm"><%=pl.plan_roi%>% R.O.I</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="mt-2">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                <i class="fa fa-users"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="pl-2 text-sm"><%=pl.plan_referral%>% Referral Bonus</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="mt-2">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="pl-2 text-sm"><%=pl.plan_duration > 1 ? (pl.plan_duration) + ' Days' : (pl.plan_duration) + ' Day' %></span>
+                        </div>
+                    </div>
+                </li>
+                <%if(websiteDetails.website_activation_fee){%>
+                <li class="mt-2">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                                <i class="fa fa-unlock"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="pl-2 text-sm"><%=websiteDetails.website_currency%><%=pl. plan_activation_fee%> Activation Fee</span>
+                        </div>
+                    </div>
+                </li>
+                <%}%>
+
+            </ul>
+            <%if(websiteDetails.website_activation_fee){%>
+            
+            <%if(user.current_activation_fee < 1){%>
+            <button data-toggle="modal" data-target="#plan-<%=pl.plan_id%>" type="button" class="btn btn-primary mb-3 d-flex text-white align-items-center">Pay Activation Fee</button>
+            <%}else{%>
+            <a href="/user/plan/merge?id=<%=pl.plan_id%>" class="btn btn-primary mb-3 d-flex text-white align-items-center">Purchase Plan</a>
+            <%}%>
+            
+
+            <%}else{%>
+            <a href="javascript:;" onclick="allowApprove('<%=websiteDetails.website_currency%><%=pl.plan_price%>','<%=pl.plan_name%>','/user/plan/merge?id=<%=pl.plan_id%>')" class="btn btn-primary mb-3 d-flex text-white align-items-center">Purchase Plan</a>
+            <%}%>
+            
+            
+
+        </div>
+    </div>
+</div>

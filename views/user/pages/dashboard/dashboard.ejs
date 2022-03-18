@@ -1,0 +1,197 @@
+<%-include("../../partials/header");%>
+
+<div class="container-fluid mt--6">
+
+    <div class="row">
+        <%-include("./notice")%>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Total Balance</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                <%=websiteDetails.website_currency + (user.roi_balance + user.referral_balance).toLocaleString() %>
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="ni ni-money-coins"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">ROI Balance</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                <%=websiteDetails.website_currency + user.roi_balance.toLocaleString() %>
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="fa fa-line-chart fa-fw fa-sm text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Referral Balance</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                <%=websiteDetails.website_currency + user.referral_balance.toLocaleString() %>
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                <i class="fa fa-money fa-fw fa-sm text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Total Referral</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                               <%=user.referral_total_count%>
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                <i class="fa fa-users fa-fw fa-sm text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-6 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Current Investment Capital</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                <%=websiteDetails.website_currency + (investment.r_plan_price || 0 ).toLocaleString()%>
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <i class="fa fa-briefcase text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-4 col-6 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Plan Expiration</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                <%if(investment.r_plan_name){%>
+                                <%=investment.r_duration%>
+                                    <%=investment.r_duration> 1 ? ' Days' :' Day'%>
+                                <%}else{%>
+                                No Plan Yet
+                                <%}%>
+                                
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <i class="fa fa-clock-o text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-4 col-6 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Previous Investment Capital</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                <%=websiteDetails.website_currency + user.previous_plan.toLocaleString() %>
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <i class="fa fa-unlock-alt text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <div class="row">
+        
+        <%-include("./referralHistory")%>
+    </div>
+    
+    <div class="row">
+        <%-include("./referralLink")%>
+        <%-include("./investmentHistory")%>
+    </div>
+    
+
+
+
+<script src="/js/user/dashboard/dashboard.js"></script>
+
+<a href="javascript:void(0)" data-toggle="modal" data-target="#reciever" id="userModal" hidden></a>
+
+<%-include("../history/modal/investmentRecieverModal")%>
+
+
+<script src="/js/user/history/investment.js"></script>
+<script src="/js/partials/fetcher.js"></script>
+<script src="/js/partials/sweetalert.js"></script>
+
+
+<%-include("../../partials/footer");%>

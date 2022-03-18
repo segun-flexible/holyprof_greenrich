@@ -1,0 +1,13 @@
+.blog-details {
+    margin: 0 auto;
+}
+
+.entry-content img {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 10px;
+}
+
+main#main {
+    padding-top: 10px;
+}
