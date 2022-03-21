@@ -6,7 +6,7 @@ const { getUserById } = require("../helpers/user");
 const CronJob = require('cron').CronJob;
 
 //This Job Running Every 10Mins oclock
-new CronJob('* * * * * *', async function () {
+new CronJob('* * * * *', async function () {
     
     const merges = await getPendingMerge();
    

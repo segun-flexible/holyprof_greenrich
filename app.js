@@ -82,7 +82,7 @@ app.use("/admin", isUserLogin, adminRoute)
 app.use(errorMiddleWare)
 
 
-app.listen(9000,()=>console.log("App Started On Port 9k")) 
+app.listen(process.env.PORT || 9000) 
   
 
 process.on('uncaughtException', function (err) {
